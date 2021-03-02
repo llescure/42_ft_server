@@ -6,8 +6,8 @@ service php7.3-fpm start
 service mysql start
 
 #Create a wordpress database and add a new user
-echo "CREATE DATABASE wordpress_db;" | mysql --user root
-echo "GRANT ALL ON wordpress_db.* TO 'user42'@'localhost' IDENTIFIED BY 'user42' WITH GRANT OPTION" | mysql --user root
+echo "CREATE DATABASE wordpress;" | mysql --user root
+echo "GRANT ALL ON wordpress.* TO 'user42'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION" | mysql --user root
 
 service nginx restart
 /bin/bash
