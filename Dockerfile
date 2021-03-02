@@ -9,7 +9,7 @@ mariadb-server \
 openssl \
 php7.3 php-mysql php-fpm php-pdo php-gd php-cli php-mbstring
 
-#Set nginx congif
+#Set nginx config
 COPY srcs/nginx_config /etc/nginx/sites-available
 RUN ln -s /etc/nginx/sites-available/nginx_config /etc/nginx/sites-enabled
 RUN rm -rf /etc/nginx/sites-enabled/default
@@ -36,9 +36,8 @@ RUN rm -rf latest.tar.gz
 COPY srcs/wp-config.php /var/www/wordpress
 RUN chown -R www-data: /var/www/wordpress
 
-#Give permission to nginx
+#Back to the main directory
 WORKDIR /.
-#RUN chown -R www-data:www-data /var/www/*
 
 #Specify the port
 EXPOSE 80 443
