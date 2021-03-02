@@ -44,5 +44,5 @@ WORKDIR /.
 EXPOSE 80 443
 
 #Run my .sh with bash that interprets shell command
-COPY srcs/init_docker.sh ./
+COPY srcs/*.sh ./
 CMD bash init_docker.sh
