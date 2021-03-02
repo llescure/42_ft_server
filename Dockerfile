@@ -18,21 +18,14 @@ RUN rm -rf /etc/nginx/sites-available/default
 #Generate a SSL certificate
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/ssl/localhost.pem -keyout /etc/ssl/localhost.key -subj "/C=FR/ST=Paris/L=Paris/O=42 School/OU=llescure/CN=localhost"
 
-#Create a wordpress database and add a new user
-RUN service php7.3-fpm start
-RUN service mysql start
-RUN echo "CREATE DATABASE wordpress;" | mysql -user root --skip-password
-#RUN echo "GRANT ALL ON wordpress.* TO 'user42'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION" | mysql -u root
-RUN service nginx start
-
 #Set the directory where to download phpmyadmin and wordpress
 WORKDIR /var/www/
 
 #Download phpmyadmin
-RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-english.tar.gz
-RUN tar -xzvf phpMyAdmin-5.1.0-english.tar.gz
-RUN rm -rf phpMyAdmin-5.1.0-english.tar.gz
-RUN mv phpMyAdmin-5.1.0-english phpmyadmin
+RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.2/phpMyAdmin-4.9.2-english.tar.gz
+RUN tar -xzvf phpMyAdmin-4.9.2-english.tar.gz
+RUN rm -rf phpMyAdmin-4.9.2-english.tar.gz
+RUN mv phpMyAdmin-4.9.2-english phpmyadmin
 COPY srcs/config.inc.php /var/www/phpmyadmin
 RUN chown -R www-data: /var/www/phpmyadmin
 
@@ -50,11 +43,6 @@ WORKDIR /.
 #Specify the port
 EXPOSE 80 443
 
-#Start the server, php and the database in the docker
-
-
-#RUN service nginx restart
-
 #Run my .sh with bash that interprets shell command
-#COPY srcs/init_docker.sh ./
-#CMD bash init_docker.sh
+COPY srcs/init_docker.sh ./
+CMD bash init_docker.sh

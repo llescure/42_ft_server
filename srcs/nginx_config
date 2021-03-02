@@ -2,7 +2,7 @@
 server {
 	listen 80; 
 	listen [::]:80;
-	server_name localhost www.localhost.com;
+	server_name localhost;
 
 	return 301 https://$server_name$request_uri;
 }
@@ -17,7 +17,7 @@ server {
 	ssl_certificate /etc/ssl/localhost.pem;
 	ssl_certificate_key /etc/ssl/localhost.key;	
 
-	root /var/www/html;
+	root /var/www;
 
 	# Add index.php to the list if you are using PHP
 	autoindex on;
