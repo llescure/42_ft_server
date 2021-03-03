@@ -50,7 +50,7 @@ docker system prune
 If you get the following error:
 > Got permission denied while trying to connect to the Docker daemon socket. 
 
-Use: ` 666 /var/run/docker.sock`
+Use: `sudo chmod 666 /var/run/docker.sock`
 
 If you have downloaded 42 vm use the following command: `sudo systemctl stop ngnix`
 A nginx docker is already running when you download 42 VM
