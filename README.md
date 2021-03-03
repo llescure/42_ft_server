@@ -144,7 +144,7 @@ nginx -s reload`
 
 Please note you can use either sites-enabled or sites-available since they are linked by a symbolic link.
 
-If you turn off the autoindex when you type http://localhost and http://localhost/html on your web browser you should see a 403 error
+If you turn off the autoindex when you type http://localhost you should see a 403 error
 
 Please check the following docs on Docker:
 https://www.cloudbees.com/blog/docker-basics-linking-and-volumes/ to understand the basics
